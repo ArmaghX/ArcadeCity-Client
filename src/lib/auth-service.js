@@ -8,18 +8,20 @@ class AuthService {
     });
   }
 
-  signup( username, password ) {
+  /* AUTH ROUTE - AUTHENTIFICATION */
+
+  signup( player, email, password ) {
     const pr = this.auth
-      .post("/auth/signup", { username, password })
+      .post("/auth/signup", { player, email, password })
       .then((response) => response.data);
       // .then(({ data }) => data); // Shorter way of `.then((response) => response.data);`
 
     return pr;
   }
 
-  login( username, password ) {
+  login( player, email, password ) {
     const pr = this.auth
-      .post("/auth/login", { username, password })
+      .post("/auth/login", { $or:[{player}, {email}], password })
       .then((response) => response.data);
       
     return pr;
@@ -33,13 +35,6 @@ class AuthService {
     return pr;
   }
 
-  me() {
-    const pr = this.auth
-      .get("/auth/me")
-      .then((response) => response.data);
-
-    return pr;
-  }
 }
 
 

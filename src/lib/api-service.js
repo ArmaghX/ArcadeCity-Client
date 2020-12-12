@@ -62,7 +62,7 @@ class ApiService {
   getOneArcade = (id) => {
     const pr = this.api
       .get(`/arcades/${id}`)
-      -then((response) => response.data);
+      .then((response) => response.data);
 
     return pr;
   }

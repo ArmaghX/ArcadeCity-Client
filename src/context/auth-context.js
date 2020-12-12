@@ -1,6 +1,6 @@
 import React from 'react';
 import authService from './../lib/auth-service';
-import apiService from './../lib/auth-service';
+import apiService from './../lib/api-service';
 
 const { Consumer, Provider } = React.createContext();
 
@@ -41,15 +41,20 @@ class AuthProvider extends React.Component {
   }
 
   // Delete Current User and set state
+  deleteMe = () => {
+    apiService.deleteMe()
+      .then(() => this.setState({ isLoggedIn: false, user: null }))
+      .catch((err) => console.log(err));
+  }
 
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout } = this;
+    const { signup, login, logout, deleteMe } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, deleteMe }}  >
         {this.props.children}
       </Provider>
     )
@@ -58,7 +63,7 @@ class AuthProvider extends React.Component {
 }
 
 
-// HOC that converts regular component into a Consumer
+// HOC (Higher Order Component) that converts regular component into a Consumer
 const withAuth = (WrappedComponent) => {
   
   return class extends React.Component {
@@ -66,7 +71,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, deleteMe } = value;
 
             return (<WrappedComponent 
                       {...this.props}
@@ -76,6 +81,7 @@ const withAuth = (WrappedComponent) => {
                       signup={signup} 
                       login={login} 
                       logout={logout}
+                      deleteMe={deleteMe}
                     />)
 
           } }

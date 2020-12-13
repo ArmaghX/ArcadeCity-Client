@@ -19,9 +19,9 @@ class AuthService {
     return pr;
   }
 
-  login( player, email, password ) {
+  login( email, password ) {
     const pr = this.auth
-      .post("/auth/login", { $or:[{player}, {email}], password })
+      .post("/auth/login", { email, password })
       .then((response) => response.data);
       
     return pr;

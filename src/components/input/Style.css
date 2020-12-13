@@ -1,0 +1,8 @@
+.placeholder::placeholder {
+    color: white;
+    text-align: center;
+}
+
+.searchCity::placeholder {
+    text-align: center;
+}

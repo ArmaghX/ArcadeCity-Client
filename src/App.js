@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Private from './pages/Private';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
+import SearchResults from './pages/SearchResults';
 
 
 
 class App extends Component {
+
   render() {
     return (
       <div className="container">
-        <Navbar />
+
+      <Navbar />
 
         <Switch>
           <Route exact path="/" component={Home} />
 
+          <Route exact path="/search" component={SearchResults} />
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
@@ -33,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

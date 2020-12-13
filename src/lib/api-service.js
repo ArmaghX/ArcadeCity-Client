@@ -54,7 +54,6 @@ class ApiService {
   getArcades = (city, game, isEmulated) => {
     const pr = this.api
       .get("/arcades", city, game, isEmulated)
-      .then((response) => response.data);
 
     return pr;
   }

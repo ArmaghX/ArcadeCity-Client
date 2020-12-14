@@ -51,9 +51,9 @@ class ApiService {
   /* ARCADES ROUTE - ARCADE MACHINES RELATED */
 
     // Get all arcades or by filters
-  getArcades = (city, game, isEmulated) => {
+  getArcades = (city) => {
     const pr = this.api
-      .get("/arcades", city, game, isEmulated)
+      .get(`/arcades/search/${city}`)
 
     return pr;
   }

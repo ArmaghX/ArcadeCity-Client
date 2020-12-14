@@ -18,7 +18,7 @@ class Home extends React.Component {
   componentDidMount () {
     apiService.me()
      .then((user) => this.setState({ isLoggedIn: true, user: user, isLoading: false }))
-     .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false })); // Delete Current User and set state-flags ¿? L43 (api-service 24)
+     .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false }));
   }
 
   handleInput = (event) => {
@@ -28,7 +28,7 @@ class Home extends React.Component {
   }
 
   goToSearchResults = () => {
-    this.props.history.push(`/search/${this.state.city}`)
+    this.props.history.push(`/search/${(this.state.city).toLowerCase()}`)
   }
 
   render(){
@@ -39,8 +39,8 @@ class Home extends React.Component {
         <img src={hero} alt="Main" style={{height: 230, width: "auto", objectFit: "contain"}} />
          <div style={{border: "2px solid", borderColor: "black", marginTop: 40, marginBottom: 10, display: "flex", padding: 8}}>
           <img src={find} style={{height: "auto", width: 20, marginRight: 6}}/>
-           <input className="searchCity" type="text" name="city" value={this.state.city} onChange={this.handleInput} placeholder="City" style={{border: "none", textAlign: "center"}} />
-          </div>
+          <input className="searchCity" type="text" name="city" value={this.state.city} onChange={this.handleInput} placeholder="City" style={{border: "none", textAlign: "center"}} />
+         </div>
         <button style={{border: "none", backgroundColor: "white"}} onClick={this.goToSearchResults}>
           <img src={insertCoinBtn} alt="Main" style={{height: 60, width: "auto", objectFit: "contain"}} />
         </button>

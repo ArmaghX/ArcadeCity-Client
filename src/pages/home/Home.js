@@ -3,15 +3,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import apiService from '../../lib/api-service';
 
-import CitySearchBar from "../../components/CitySearchBar";
-
 import CitySearch from '../../components/input/CitySearch';
 
 // Import Assets
 import hero from './../../assets/arcada.png';
 import insertCoinBtn from './../../assets/inserte-moneda.png';
+import find from './../../assets/lupa.png'
 
 class Home extends React.Component {
+  state = {
+    city: ""
+  }
 
   componentDidMount () {
     apiService.me()
@@ -19,19 +21,27 @@ class Home extends React.Component {
      .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false })); // Delete Current User and set state-flags ¿? L43 (api-service 24)
   }
 
+  handleInput = (event) => {
+    const city = event.target.value;
+    this.setState({city: city});
 
-  render(props){
+  }
 
-    const goToSearchResults = () => {
-      this.props.history.push('/search')
-    }
+  goToSearchResults = () => {
+    this.props.history.push(`/search/${this.state.city}`)
+  }
+
+  render(){
 
     return (
       <div style={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", height: "100vh"}}> 
         <h1 style={{marginBottom: 40}}>Welcome to ArcadeCity</h1>
         <img src={hero} alt="Main" style={{height: 230, width: "auto", objectFit: "contain"}} />
-        <CitySearch />
-        <button style={{border: "none", backgroundColor: "white"}} onClick={() => goToSearchResults()}>
+         <div style={{border: "2px solid", borderColor: "black", marginTop: 40, marginBottom: 10, display: "flex", padding: 8}}>
+          <img src={find} style={{height: "auto", width: 20, marginRight: 6}}/>
+           <input className="searchCity" type="text" name="city" value={this.state.city} onChange={this.handleInput} placeholder="City" style={{border: "none", textAlign: "center"}} />
+          </div>
+        <button style={{border: "none", backgroundColor: "white"}} onClick={this.goToSearchResults}>
           <img src={insertCoinBtn} alt="Main" style={{height: 60, width: "auto", objectFit: "contain"}} />
         </button>
       </div>

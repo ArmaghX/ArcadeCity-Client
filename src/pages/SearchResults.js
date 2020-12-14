@@ -8,7 +8,16 @@ import hero from './../assets/arcada.png';
 
 class SearchResults extends Component {
     state = {
-        showModal: false
+        showModal: false,
+        arcades: [],
+        arcadeToShow: {}
+    }
+
+    componentDidMount(){
+        // Get the city from the URL
+        // This.props.match.params.city
+        // Make get request with the City name to get the Arcades
+        // Set the response with the Arcades to the State
     }
 
     render() {

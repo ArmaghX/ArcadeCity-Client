@@ -28,7 +28,7 @@ class App extends Component {
 
           <Route exact path="/search/:city" component={SearchResults} />
 
-          <Route exact path="/create-arcade" component={NewArcade} />
+          <PrivateRoute exact path="/create-arcade" component={NewArcade} />
             {/* New Arcade is a Private Route */}
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />

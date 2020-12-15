@@ -14,8 +14,9 @@ import hero from './../assets/arcada.png';
 class SearchResults extends Component {
     state = {
         showModal: false,
+        showArcadeDetails: false,
         arcades: [],
-        arcadeToShow: {}
+        arcadeToShow: {},
     }
 
     componentDidMount(){
@@ -26,8 +27,16 @@ class SearchResults extends Component {
         // Set the response with the Arcades to the State
     }
 
+    showArcadeDetails = (arcadeObj) => {
+        // set the state of showArcadeDetails to true and also set arcadeToShow in the same this.setState
+    }
+
+    closeArcadeDetails = () => {
+        // set the state of showArcadeDetails to false
+    }
+
     getResultsCity = () => {
-        let {city, game, isEmulated} = this.props.match.params;
+        let {city} = this.props.match.params;
         // console.log(this.props.location)
         ApiService.getArcades(city)
             .then((response) => {
@@ -44,15 +53,20 @@ class SearchResults extends Component {
 
         return (
             <div style={{width: "100vw", height: "100vh", display: "flex", alignItems: "center", flexDirection: "column"}}>
-                <img src={hero} style={{width: "auto", height: 80, marginTop: 30}} />
+                <img src={hero} style={{width: "auto", height: 80, marginTop: 30}} alt="" />
                 <CityMainSearch />
+
+                {this.state.showArcadeDetails
+                    ? <div>Show the big card from this.arcadeToShow </div>
+                    : null
+                }
                 <FilterResultsBtn onClick={() => handleModal()} />
                 {this.state.showModal && <ModalFilters onClick={() => handleModal()} />}
-                {this.state.arcades 
+                {this.state.arcades.length > 0 
                 ? this.state.arcades.map((element) => {
-                    return <ArcadeCard key={element._id} arcade={element}/>}
+                    return <ArcadeCard key={element._id} arcade={element} showArcadeDetails={this.showArcadeDetails} />}
                 )
-                : null
+                : <p>No results found for this City</p>
                 }
 
             </div>

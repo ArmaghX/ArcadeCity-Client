@@ -1,9 +1,6 @@
 import React from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import apiService from '../../lib/api-service';
-
-import CitySearch from '../../components/input/CitySearch';
 
 // Import Assets
 import hero from './../../assets/arcada.png';
@@ -38,7 +35,7 @@ class Home extends React.Component {
         <h1 style={{marginBottom: 40}}>Welcome to ArcadeCity</h1>
         <img src={hero} alt="Main" style={{height: 230, width: "auto", objectFit: "contain"}} />
          <div style={{border: "2px solid", borderColor: "black", marginTop: 40, marginBottom: 10, display: "flex", padding: 8}}>
-          <img src={find} style={{height: "auto", width: 20, marginRight: 6}}/>
+          <img src={find} style={{height: "auto", width: 20, marginRight: 6}} alt="" />
           <input className="searchCity" type="text" name="city" value={this.state.city} onChange={this.handleInput} placeholder="City" style={{border: "none", textAlign: "center"}} />
          </div>
         <button style={{border: "none", backgroundColor: "white"}} onClick={this.goToSearchResults}>

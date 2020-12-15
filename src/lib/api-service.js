@@ -8,7 +8,7 @@ class ApiService {
     // this.api  is a reusable base of the request containing the base url (baseURL) 
     // of the API and the options ( `withCredentials: true` )
     this.api = axios.create({        
-      baseURL: `${process.env.REACT_APP_API_URL}/api`, // baseURL: process.env.REACT_APP_API_URL,
+      baseURL: process.env.REACT_APP_API_URL + '/api', // baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     });
   }
@@ -67,39 +67,36 @@ class ApiService {
   }
 
   createArcade = (
-    game, 
-    description, 
-    maxPlayers, 
-    isEmulated, 
-    rating, 
-    isActive, 
-    coins, 
-    yearReleased, 
-    gallery, 
-    hunterId, 
-    coordinates, 
-    contactInfo, 
-    address, 
-    city, 
-    comments
+    game,
+    description,
+    maxPlayers,
+    isEmulated,
+    coins,
+    yearReleased,
+    highestScores,
+    gallery,
+    coordinates,
+    contactInfo,
+    address,
+    city
     ) => {
     const pr = this.api
       .post("/arcades", 
-      game, 
-      description, 
-      maxPlayers, 
-      isEmulated, 
-      rating, 
-      isActive, 
-      coins, 
-      yearReleased, 
-      gallery, 
-      hunterId, 
-      coordinates, 
-      contactInfo, 
-      address, 
-      city, 
-      comments )
+      {
+        game,
+        description,
+        maxPlayers,
+        isEmulated,
+        coins,
+        yearReleased,
+        highestScores,
+        gallery,
+        coordinates,
+        contactInfo,
+        address,
+        city
+      }
+      )
       .then((response) => response.data);
 
     return pr;

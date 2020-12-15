@@ -16,7 +16,7 @@ class BigArcadeCard extends Component {
                     <p>Listed by {bigcardProps.hunterId.player}</p>
                     </div>
                     <div style={{height: "70%", width: "100", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
-                        <img src={bigcardProps.gallery} />
+                        <img src={bigcardProps.gallery} alt="" />
                         <p>Game: {bigcardProps.game} {bigcardProps.yearReleased}</p>
                         <p>Description: {bigcardProps.description}</p>
 
@@ -29,7 +29,7 @@ class BigArcadeCard extends Component {
                         ? <p>No contact Info Available</p>
                         : <p>{bigcardProps.address}</p>
                         }
-                        
+
                     </div>
                 </div>
             </div>

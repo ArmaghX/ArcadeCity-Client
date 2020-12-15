@@ -12,6 +12,7 @@ import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
 import SearchResults from './pages/SearchResults';
 import NewArcade from './pages/new-arcade/NewArcade';
+import PlayerProfile from './pages/player-profile/PlayerProfile';
 
 
 
@@ -25,9 +26,9 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Home} />
-
           <Route exact path="/search/:city" component={SearchResults} />
 
+          <PrivateRoute exact path="/player/me" component={PlayerProfile} />
           <PrivateRoute exact path="/create-arcade" component={NewArcade} />
             {/* New Arcade is a Private Route */}
           <AnonRoute exact path="/signup" component={Signup} />

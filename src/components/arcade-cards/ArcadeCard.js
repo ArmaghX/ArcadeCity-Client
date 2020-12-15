@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BigArcadeCard from './BigArcadeCard';
 
 class ArcadeCard extends Component {
     render() {
@@ -9,8 +8,8 @@ class ArcadeCard extends Component {
                     <img src={this.props.arcade.gallery} alt="arcadeImage" />
                     <h4>{this.props.arcade.game}</h4>
                 </div>
-                <div>
-                    <button style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={() => this.props.showArcadeDetails(this.props.arcade)}>Show Arcade Details</button>
+                <div style={{display: "flex", justifyContent: "flex-end"}}>
+                    <button  onClick={() => this.props.showArcadeDetails(this.props.arcade)}>Show Arcade Details</button>
                 </div>
             </div>
         )

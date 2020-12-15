@@ -6,13 +6,13 @@ class Navbar extends Component {
   render() {
     // const { user, logout, isLoggedin } = this.props;
     return (
-      <nav className="navbar">
+      <nav className="navbar" style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
         <Link to={'/'} id='home-btn'>
           <h4>Home</h4>
         </Link>
         {this.props.isLoggedIn ? (
           <>
-            <p>username: {this.props.user && this.props.user.player}</p>
+            <Link style={{textDecoration: "none"}} to={"/player/me"}><h2>{this.props.user && this.props.user.player}</h2></Link>
             <button onClick={this.props.logout}>Logout</button>
           </>
         ) : (

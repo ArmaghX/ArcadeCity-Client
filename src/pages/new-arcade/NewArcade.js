@@ -102,7 +102,7 @@ class NewArcade extends Component {
              <h2> Create New Arcade</h2>
             
               <form className="createArcadeForm" onSubmit={this.handleSubmit} style={{textAlign: "center"}}>
-                <label > Game </label><br/>
+                <label > Game *</label><br/>
                     <input style={{marginBottom: 20}} type="text" name="game" value={this.state.game} onChange={this.handleChange} placeholder="Name the Arcade" /><br/>
                 <label> Description </label><br/>
                     <textarea style={{marginBottom: 20}} name="description" value={this.state.description} onChange={this.handleChange} placeholder="Add a brief description" /><br/>
@@ -116,16 +116,19 @@ class NewArcade extends Component {
                     <input style={{marginBottom: 20}} type="number" name="yearRelease" value={this.state.yearRelease} onChange={this.handleChange} placeholder="1970" min="1970" max="2020" /><br/>
                 <label> Maximum Number of Players </label><br/>
                     <input style={{marginBottom: 20}} type="number" name="maxPlayers" value={this.state.maxPlayers} onChange={this.handleChange} min="1" max="8" /><br/>
-                <label> Arcade Picture </label><br/>
+                <label> Arcade Picture *</label><br/>
                     <img style={{ width: "100px" }} src={this.state.gallery} alt="" /><br/>
                     <input style={{marginBottom: 20}} type="file" name="gallery" onChange={this.handleFileUpload} /><br/>
-                <label>Provide the Location Coordinates (Optional) </label><br/>
+                    <label> Contact Info </label><br/>
+                    <textarea style={{marginBottom: 20}} type="text" name="contactInfo" value={this.state.contactInfo} onChange={this.handleChange} placeholder="Where did you find this Arcade?" /><br/>
+                <label>Provide the Location Coordinates (For map location) </label><br/>
                     <input type="number" name="long" placeholder="Longitude" onChange={this.handleChange} value={this.state.long}/><br/>
                     <input style={{marginBottom: 20}} type="number" name="lat" placeholder="Latitude" onChange={this.handleChange} value={this.state.lat}/> <br/>
-                <label> Address </label><br/>
-                    <input style={{marginBottom: 20}} type="text" name="address" value={this.state.address} onChange={this.handleChange} placeholder="Describe the Arcade" /><br/>
-                <label> City </label><br/>
+                <label> Address *</label><br/>
+                    <input style={{marginBottom: 20}} type="text" name="address" value={this.state.address} onChange={this.handleChange} placeholder="Current Location" /><br/>
+                <label> City *</label><br/>
                     <input style={{marginBottom: 20}} type="text" name="city" value={this.state.city} onChange={this.handleChange} placeholder="City" /><br/>
+                    <p>* is for Mandatory Fields</p>
                 <button type="submit"> 
                   CREATE NEW ARCADE 
                 </button>

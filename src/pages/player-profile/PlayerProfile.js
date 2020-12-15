@@ -31,6 +31,10 @@ class PlayerProfile extends Component {
         this.setState({isEditing: false})
     }
 
+    eraseListedArcade = () => {
+
+    }
+
     handleFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files);
         const file = e.target.files[0];
@@ -69,7 +73,7 @@ class PlayerProfile extends Component {
                             <h3 style={{textAlign: "center"}}>LISTED ARCADES</h3>
                             {this.state.arcade.length > 0 
                             ? this.state.arcade.map((element) => {
-                                return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}}/>}
+                                return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}} currentUser={this.props.user} showArcadeDetails={this.showArcadeDetails} />}
                             )
                             : <p>No results found for this City</p>
                             }
@@ -81,14 +85,14 @@ class PlayerProfile extends Component {
                     <button style={{borderRadius: 6}} onClick={this.cancelEditProfile} > Cancel Edit </button>
                     <div style={{display: "flex", alignItems: "center", flexDirection: "column", height: "100vh"}}>
                         <h2>PROFILE</h2>
+                        <img src={avatar} alt="" style={{height: "auto", width: 80, marginBottom: 20}} />
                         <form>
-                            <img src={avatar} alt="" style={{height: "auto", width: 80, marginBottom: 20}} />
                         </form>
                         <div>
                             <h3 style={{textAlign: "center"}}>MODIFY LISTED ARCADES</h3>
                             {this.state.arcade.length > 0 
                             ? this.state.arcade.map((element) => {
-                                return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}} />}
+                                return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}} isEditing={this.state.isEditing} currentUser={this.props.user} showArcadeDetails={this.showArcadeDetails} />}
                             )
                             : <p>No results found for this City</p>
                             }

@@ -31,9 +31,9 @@ class ApiService {
     return pr;
   }
 
-  updateMe() {
+  updateMe(avatarImg) {
     const pr = this.api
-      .put("/player/me")
+      .put("/player/me", avatarImg)
       .then((response) => response.data);
 
     return pr;

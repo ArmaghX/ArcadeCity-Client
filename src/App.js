@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import SearchResults from './pages/SearchResults';
 import NewArcade from './pages/new-arcade/NewArcade';
 import PlayerProfile from './pages/player-profile/PlayerProfile';
+import ArcadeDetails from './pages/arcade-details/ArcadeDetails';
 
 
 
@@ -27,6 +28,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/search/:city" component={SearchResults} />
+          <Route exact path="/arcade-details/:id" component={ArcadeDetails} />
 
           <PrivateRoute exact path="/player/me" component={PlayerProfile} />
           <PrivateRoute exact path="/create-arcade" component={NewArcade} />

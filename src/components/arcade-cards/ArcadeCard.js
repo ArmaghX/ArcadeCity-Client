@@ -12,19 +12,41 @@ class ArcadeCard extends Component {
 
 
     render() {
-    console.log(this.props);
+        const { 
+            arcade, 
+            centerMapToLocation, 
+            isEditing, 
+            currentUser, 
+            showArcadeDetails, 
+            eraseListedArcade,
+            showLocationButton
+        } = this.props;
+
+        const {arcadeId} = this.state;
+
         return (
-            <div style={{border: "2px solid black", borderRadius: 6, marginBottom: 20, width: 350}}>
+            <div style={{display: "inline-block", margin: "0px 40px" ,border: "2px solid black", borderRadius: 6, marginBottom: 20, width: 350}}>
                 <div style={{padding: "10px" ,display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                    <img src={this.props.arcade.gallery} alt="arcadeImage" />
-                    <h4 style={{border: "2px solid black"}}>{this.props.arcade.game}</h4>
-                    {this.props.currentUser && this.props.currentUser._id === this.props.arcade.hunterId && this.props.isEditing
-                    ? <button onClick={() => this.props.eraseListedArcade(this.state.arcadeId)} style={{position: "absolute", border: "2px solid black"}}>DELETE</button>
+                    <img src={arcade.gallery} alt="arcadeImage" />
+                    <h4 style={{border: "2px solid black"}}>{arcade.game}</h4>
+                    {currentUser && currentUser._id === arcade.hunterId && isEditing
+                    ? <button onClick={() => eraseListedArcade(arcadeId)} style={{position: "absolute", border: "2px solid black"}}>DELETE</button>
                     : null
                     }
                 </div>
                 <div style={{display: "flex", justifyContent: "flex-end"}}>
-                    <button  onClick={() => this.props.showArcadeDetails(this.props.arcade._id)}>Show Arcade Details</button>
+                    { currentUser && currentUser._id === arcade.hunterId
+                    ? <button  onClick={() => showArcadeDetails(arcadeId)}>Show Arcade Details</button>
+                    : <button  onClick={() => showArcadeDetails(arcade)}>Show Arcade Details</button>
+                    }
+                    {
+                        // AND operator short-circuit evaluation
+                        //showLocationButton && <button onClick={() => centerMapToLocation(arcade.location.coordinates)}>SHOW LOCATION</button>
+                        showLocationButton 
+                            ? <button onClick={() => centerMapToLocation(arcade.location.coordinates)}>SHOW LOCATION</button>
+                            : null
+
+                    }
                 </div>
             </div>
         )

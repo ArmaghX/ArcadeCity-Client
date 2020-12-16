@@ -8,6 +8,7 @@ import avatar from './../../assets/avatar.png';
 
 import ArcadeCard from './../../components/arcade-cards/ArcadeCard';
 
+
 class PlayerProfile extends Component {
     state = {
         avatarImg: "",
@@ -36,21 +37,17 @@ class PlayerProfile extends Component {
         this.setState({isEditing: false})
     }
 
+    showArcadeDetails = (id) => {
+        // this.setState({showArcadeDetails: true, arcadeToShow: {arcadeObj}})
+        this.props.history.push(`/arcade-details/${id}`)
+    }
+
     eraseListedArcade = (id) => {
         console.log(id);
         apiService.deleteArcade(id)
             .then(() => {
                 const myArcadesArr = this.state.arcade.filter((data) => data._id !== id)
-
-
                 this.setState({arcade: myArcadesArr})
-
-                apiService.me()
-                .then((me) => {
-                    const myArcadesArr = this.props.user.listedArcades;
-                    this.setState({arcade: myArcadesArr})
-                })
-                .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
 
@@ -114,6 +111,9 @@ class PlayerProfile extends Component {
                             : <p>No Arcades Listed</p>
                             }
                         </div>
+                        {
+
+                        }
                     </div>
                 </>
                 : 

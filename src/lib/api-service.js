@@ -58,6 +58,20 @@ class ApiService {
     return pr;
   }
 
+  addFavourites = (id) => {
+    const pr = this.api
+      .put(`/player/favourites/${id}`)
+
+    return pr;
+  }
+
+  removeFavourites = (id) => {
+    const pr = this.api
+      .post(`/player/favourites/${id}`)
+
+    return pr;
+  }
+
   getOneArcade = (id) => {
     const pr = this.api
       .get(`/arcades/${id}`)

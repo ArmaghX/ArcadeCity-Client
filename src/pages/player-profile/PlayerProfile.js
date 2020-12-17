@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { withAuth } from './../../context/auth-context';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import apiService from './../../lib/api-service';
 
 // Import Assets
 import avatar from './../../assets/avatar.png';
-
+import newArcade from './../../assets/1-up.png';
 import ArcadeCard from './../../components/arcade-cards/ArcadeCard';
 
 
@@ -88,6 +89,14 @@ class PlayerProfile extends Component {
         .catch((err) => console.log(err));
     }
 
+    goToFavourites = () => {
+        this.props.history.push('/favourites')
+    }
+
+    goToCreateNewArcade = () => {
+        this.props.history.push('/create-arcade')
+    }
+
     render() {
 
         return (
@@ -96,14 +105,25 @@ class PlayerProfile extends Component {
                 ?
                 <>
                     <button style={{borderRadius: 6}} onClick={this.editMyProfile} > Edit </button>
-                    <div style={{display: "flex", alignItems: "center", flexDirection: "column", height: "100vh"}}>
+                    
+                    <div style={{display: "flex", alignItems: "center", flexDirection: "column", height: "100vh"}}> 
                         <h2 style={{marginBottom: 50}}> PROFILE </h2>
+                        
                         { !this.props.user.avatarImg
                         ? <img src={avatar} alt="" style={{height: 80, width: "auto", marginBottom: 41, borderRadius: "50%"}} />
                         : <img src={this.state.avatarImg} alt="" style={{height: 80, width: "auto", marginBottom: 62, borderRadius: "50%"}} />
                         }
+
+                        <button style={{borderRadius: 6}} onClick={this.goToFavourites}>FAVOURITES</button>
+
+                        <h3 style={{textAlign: "center"}}>LISTED ARCADES</h3>
+
+                        <button 
+                            style={{border: "none", backgroundColor: "white"}} 
+                            onClick={this.goToCreateNewArcade} > List now <img src={newArcade} alt="" style={{height: 40, width: "auto",}} />
+                        </button>
+
                         <div>
-                            <h3 style={{textAlign: "center"}}>LISTED ARCADES</h3>
                             {this.state.arcade.length > 0 
                             ? this.state.arcade.map((element) => {
                                 return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}} currentUser={this.props.user} eraseListedArcade={this.eraseListedArcade} showArcadeDetails={this.showArcadeDetails} />}
@@ -111,9 +131,6 @@ class PlayerProfile extends Component {
                             : <p>No Arcades Listed</p>
                             }
                         </div>
-                        {
-
-                        }
                     </div>
                 </>
                 : 

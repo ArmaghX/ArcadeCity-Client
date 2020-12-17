@@ -34,7 +34,7 @@ class ArcadeCard extends Component {
             <div style={{display: "inline-block", margin: "0px 40px" ,border: "2px solid black", borderRadius: 6, marginBottom: 20, width: 350}}>
                 <div style={{padding: "10px" ,display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <img src={arcade.gallery} alt="arcadeImage" />
-                    <h4 style={{border: "2px solid black"}}>{arcade.game}</h4>
+                    <h4>{arcade.game}</h4>
                     {currentUser && currentUser._id === arcade.hunterId && isEditing
                     ? <button onClick={() => eraseListedArcade(arcadeId)} style={{position: "absolute", border: "2px solid black"}}>DELETE</button>
                     : null

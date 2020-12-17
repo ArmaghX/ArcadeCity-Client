@@ -7,6 +7,7 @@ import apiService from './../../lib/api-service';
 import hero from './../../assets/arcada.png';
 import fav from './../../assets/estrella.png';
 import unFav from './../../assets/silueta-de-estrella-negra.png';
+import { getNodeText } from '@testing-library/react';
 
 class ArcadeDetails extends Component {
     state = {
@@ -20,15 +21,10 @@ class ArcadeDetails extends Component {
         apiService.getOneArcade(id)
             .then((arcade) => {
                 this.setState({arcadeToDisplay: arcade})
-                const filteredFavArr = this.state.arcadeToDisplay.hunterId.favourites.filter((data) => data === arcade._id)
-                if (filteredFavArr !== []) {
-                    this.setState({isFavourite: false})
-                    console.log(filteredFavArr)
-                } else if (filteredFavArr === id) {
+                const filteredFavArcade = this.state.arcadeToDisplay.hunterId.favourites.filter((data) => data === arcade._id)
+                if (filteredFavArcade[0] === id) {
                     this.setState({isFavourite: true})
                 }
-            //    const myArcadesArr = this.state.arcade.filter((data) => data._id !== id)
-            //     this.setState({arcade: myArcadesArr})
             })
             .catch((err) => console.log(err));
 
@@ -36,10 +32,16 @@ class ArcadeDetails extends Component {
 
     addNewFavourite = () => {
         const id = this.props.match.params.id
-        apiService.addFavourites(id)
+        const filteredFavArr = this.state.arcadeToDisplay.hunterId.favourites.filter((data) => data === id)
+        if (filteredFavArr === id) {
+            return;
+        } else {
+            apiService.addFavourites(id)
             .then(() => {
                 this.setState({isFavourite: true})
             })
+        }
+        
     }
 
     removeNewFavourite = () => {

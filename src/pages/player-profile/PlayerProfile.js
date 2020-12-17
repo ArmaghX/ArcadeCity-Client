@@ -22,7 +22,6 @@ class PlayerProfile extends Component {
         apiService.me()
         .then((me) => {
             const myArcadesArr = me.listedArcades;
-            console.log(myArcadesArr);
             this.setState({avatarImg: me.avatarImg, arcade: myArcadesArr})
         })
         .catch((err) => console.log(err));

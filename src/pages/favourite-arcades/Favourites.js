@@ -26,8 +26,8 @@ class Favourites extends Component {
         return (
             <div>
                 {this.state.favArcades.length > 0 
-                ? this.state.favArcades.map((element) => {
-                    return <ArcadeCard key={element._id} arcade={element} style={{marginBottom: 40}} currentUser={this.props.user} showArcadeDetails={this.showArcadeDetails} isFavourite />}
+                ? this.state.favArcades.map((element, i) => {
+                    return <ArcadeCard key={i} arcade={element} style={{marginBottom: 40}} currentUser={this.props.user} showArcadeDetails={this.showArcadeDetails} isFavourite />}
                 )
                 : 
                 <>

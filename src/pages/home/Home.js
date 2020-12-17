@@ -6,6 +6,7 @@ import apiService from '../../lib/api-service';
 import hero from './../../assets/arcada.png';
 import insertCoinBtn from './../../assets/inserte-moneda.png';
 import find from './../../assets/lupa.png'
+import './Style.css';
 
 class Home extends React.Component {
   state = {
@@ -31,10 +32,10 @@ class Home extends React.Component {
   render(){
 
     return (
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", height: "100vh"}}> 
-        <h1 style={{marginBottom: 40}}>Welcome to ArcadeCity</h1>
-        <img src={hero} alt="Main" style={{height: 230, width: "auto", objectFit: "contain"}} />
-         <div style={{border: "2px solid", borderColor: "black", marginTop: 40, marginBottom: 10, display: "flex", padding: 8}}>
+      <div className="main-div"> 
+        <h1>Welcome to ArcadeCity</h1>
+        <img src={hero} alt="Main" style={{height: 230}} />
+         <div className="home-search-bar" style={{marginTop: 40, marginBottom: 10, padding: 8}}>
           <img src={find} style={{height: "auto", width: 20, marginRight: 6}} alt="" />
           <input className="searchCity" type="text" name="city" value={this.state.city} onChange={this.handleInput} placeholder="City" style={{border: "none", textAlign: "center"}} />
          </div>

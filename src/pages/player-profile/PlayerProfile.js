@@ -118,7 +118,7 @@ class PlayerProfile extends Component {
                         <h3 style={{textAlign: "center"}}>LISTED ARCADES</h3>
 
                         <button 
-                            style={{border: "none", backgroundColor: "white"}} 
+                            style={{border: "none", backgroundColor: "white", marginBottom: 20}} 
                             onClick={this.goToCreateNewArcade} > List now <img src={newArcade} alt="" style={{height: 40, width: "auto",}} />
                         </button>
 

@@ -1,0 +1,33 @@
+/* Home Component Styles */
+
+.main-div {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh
+}
+
+.main-div h1 {
+    margin-bottom: 40;
+}
+
+div.main-div > img {
+    height: 230; 
+    width: auto; 
+    object-fit: contain;
+}
+
+.home-search-bar {
+    border: 2px solid;
+    border-color: black;
+    margin-top: 40; 
+    margin-bottom: 10;
+    display: flex;
+    padding: 8;
+}
+
+/* .home-search-bar img {
+    width: 20;
+    margin-right: 6;
+} */

@@ -84,7 +84,6 @@ class SearchResults extends Component {
                         .addTo(this.map);
                     });
                   }
-                console.log(response);
                 this.setState({arcades: response.data})
             })
     }
@@ -97,11 +96,11 @@ class SearchResults extends Component {
 
 
         return (
-            <div style={{position: "relative", width: "100vw", height: "100vh", display: "flex", alignItems: "center", flexDirection: "column"}}>
+            <div style={{position: "relative", width: "100vw", height: "100vh"}}>
                 <div ref={(el) => (this.mapContainer = el)} className="mapContainer" />
                 
-                <div style={{ position: 'absolute', zIndex: 100, backgroundColor: 'transparent'}}>
-
+                <div style={{ position: 'absolute', zIndex: 50, backgroundColor: 'transparent'}}>
+                <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
                 <Link to={'/'}>
                     <img src={hero} style={{width: "auto", height: 80, marginTop: 30}} alt="" />
                 </Link>
@@ -113,8 +112,8 @@ class SearchResults extends Component {
                     ? <BigArcadeCard closeArcadeDetails={this.closeArcadeDetails} arcadeToShow={this.state.arcadeToShow}/>
                     : null
                 }
-                
-                <div style={{overflowY: 'hidden', overflowX: "scroll", width: '100vw', whiteSpace: 'nowrap', height: '200px'}}>
+                </div>
+                <div style={{marginTop: '48vh' , overflowY: 'hidden', overflowX: "scroll", width: '100vw', whiteSpace: 'nowrap', height: '200px'}}>
 
                 {this.state.arcades.length > 0 
                 ? this.state.arcades.map((element) => {

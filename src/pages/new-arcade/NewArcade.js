@@ -62,7 +62,6 @@ class NewArcade extends Component {
             city
         )
         .then((newArcade) => {
-            console.log(newArcade);
             this.props.history.push(`/arcade-details/${newArcade._id}`);
         })
         .catch((err) => console.log(err));

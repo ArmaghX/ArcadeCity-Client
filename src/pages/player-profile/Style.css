@@ -1,0 +1,14 @@
+/* Player Profile Component Styles */
+
+.profile-div-flex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh
+}
+
+#create-arcade-btn {
+    border: none; 
+    background-color: white;
+    margin-bottom: 20
+}

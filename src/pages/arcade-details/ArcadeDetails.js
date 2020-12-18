@@ -7,7 +7,6 @@ import apiService from './../../lib/api-service';
 import hero from './../../assets/arcada.png';
 import fav from './../../assets/estrella.png';
 import unFav from './../../assets/silueta-de-estrella-negra.png';
-import { getNodeText } from '@testing-library/react';
 
 class ArcadeDetails extends Component {
     state = {

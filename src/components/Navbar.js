@@ -6,7 +6,7 @@ class Navbar extends Component {
   render() {
     // const { user, logout, isLoggedin } = this.props;
     return (
-      <nav className="navbar" style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
+      <nav className="navbar">
         <Link to={'/'} id='home-btn'>
           <h4>Home</h4>
         </Link>

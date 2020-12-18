@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 
-// Import Assets
-import fav from './../../assets/estrella.png';
-import unFav from './../../assets/silueta-de-estrella-negra.png';
-
 class ArcadeCard extends Component {
     state = {
         arcadeId: ""
@@ -15,7 +11,6 @@ class ArcadeCard extends Component {
         this.setState({arcadeId: arcadeId})
     }
 
-
     render() {
         const { 
             arcade, 
@@ -25,7 +20,6 @@ class ArcadeCard extends Component {
             showArcadeDetails, 
             eraseListedArcade,
             showLocationButton,
-            isFavourite
         } = this.props;
 
         const {arcadeId} = this.state;

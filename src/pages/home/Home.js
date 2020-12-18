@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import apiService from '../../lib/api-service';
 
 // Import Assets
 import hero from './../../assets/arcada.png';
 import insertCoinBtn from './../../assets/inserte-moneda.png';
-import find from './../../assets/lupa.png'
+import find from './../../assets/lupa.png';
+
 import './Style.css';
 
 class Home extends React.Component {
@@ -22,7 +22,6 @@ class Home extends React.Component {
   handleInput = (event) => {
     const city = event.target.value;
     this.setState({city: city});
-
   }
 
   goToSearchResults = () => {

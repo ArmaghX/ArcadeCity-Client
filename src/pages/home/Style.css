@@ -27,6 +27,10 @@ div.main-div > img {
     padding: 8;
 }
 
+.navbar {
+    background-color: red;
+}
+
 /* .home-search-bar img {
     width: 20;
     margin-right: 6;

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 
 import CityMainSearch from './../components/input/CityMainSearch';
-import FilterResultsBtn from './../components/FilterBtn';
 import ArcadeCard from '../components/arcade-cards/ArcadeCard';
 import BigArcadeCard from './../components/arcade-cards/BigArcadeCard';
 
@@ -96,11 +95,11 @@ class SearchResults extends Component {
 
 
         return (
-            <div style={{position: "relative", width: "100vw", height: "100vh"}}>
+            <div className="search-main-div">
                 <div ref={(el) => (this.mapContainer = el)} className="mapContainer" />
                 
-                <div style={{ position: 'absolute', zIndex: 50, backgroundColor: 'transparent'}}>
-                <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <div className="search-div-zIndex">
+                <div className="search-div-align-center">
                 <Link to={'/'}>
                     <img src={hero} style={{width: "auto", height: 80, marginTop: 30}} alt="" />
                 </Link>
@@ -113,7 +112,7 @@ class SearchResults extends Component {
                     : null
                 }
                 </div>
-                <div style={{marginTop: '48vh' , overflowY: 'hidden', overflowX: "scroll", width: '100vw', whiteSpace: 'nowrap', height: '200px'}}>
+                <div className="search-div-overflow">
 
                 {this.state.arcades.length > 0 
                 ? this.state.arcades.map((element) => {

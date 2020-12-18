@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withAuth } from './../../context/auth-context';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import apiService from './../../lib/api-service';
 
@@ -8,6 +7,8 @@ import apiService from './../../lib/api-service';
 import avatar from './../../assets/avatar.png';
 import newArcade from './../../assets/1-up.png';
 import ArcadeCard from './../../components/arcade-cards/ArcadeCard';
+
+import './Style.css';
 
 
 class PlayerProfile extends Component {
@@ -38,12 +39,10 @@ class PlayerProfile extends Component {
     }
 
     showArcadeDetails = (id) => {
-        // this.setState({showArcadeDetails: true, arcadeToShow: {arcadeObj}})
         this.props.history.push(`/arcade-details/${id}`)
     }
 
     eraseListedArcade = (id) => {
-        console.log(id);
         apiService.deleteArcade(id)
             .then(() => {
                 const myArcadesArr = this.state.arcade.filter((data) => data._id !== id)
@@ -54,7 +53,6 @@ class PlayerProfile extends Component {
     }
 
     handleFileUpload = (e) => {
-        console.log("The file to be uploaded is: ", e.target.files);
         const file = e.target.files[0];
     
         const uploadData = new FormData();
@@ -105,7 +103,7 @@ class PlayerProfile extends Component {
                 <>
                     <button style={{borderRadius: 6}} onClick={this.editMyProfile} > Edit </button>
                     
-                    <div style={{display: "flex", alignItems: "center", flexDirection: "column", height: "100vh"}}> 
+                    <div className="profile-div-flex"> 
                         <h2 style={{marginBottom: 50}}> PROFILE </h2>
                         
                         { !this.props.user.avatarImg
@@ -118,8 +116,9 @@ class PlayerProfile extends Component {
                         <h3 style={{textAlign: "center"}}>LISTED ARCADES</h3>
 
                         <button 
-                            style={{border: "none", backgroundColor: "white", marginBottom: 20}} 
-                            onClick={this.goToCreateNewArcade} > List now <img src={newArcade} alt="" style={{height: 40, width: "auto",}} />
+                            id="create-arcade-btn"
+                            onClick={this.goToCreateNewArcade} > 
+                            List now <img src={newArcade} alt="" style={{height: 40, width: "auto",}} />
                         </button>
 
                         <div>

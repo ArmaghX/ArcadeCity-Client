@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class BigArcadeCard extends Component {
     
@@ -17,8 +18,12 @@ class BigArcadeCard extends Component {
                     </div>
                     <div style={{height: "70%", width: "100", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
                         <img src={bigcardProps.gallery} alt="" />
-                        <p>Game: {bigcardProps.game} {bigcardProps.yearReleased}</p>
-                        <p>Description: {bigcardProps.description}</p>
+                        <Link to={`/arcade-details/${this.props.arcadeToShow.arcadeObj._id}`}>
+                        <p>{bigcardProps.game}</p>
+                        </Link>
+                        <p>{bigcardProps.yearReleased}</p>
+                        
+                        <p>{bigcardProps.description}</p>
 
                         {!bigcardProps.contactInfo
                         ? <p>No contact Info Available</p>
